@@ -1,27 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-image: url("backgroundimg.png");
+    background-repeat: repeat;
+}
+
 .rules {
     outline-style: solid;
-    outline-color: black;
+    outline-color: white;
     outline-width: 1px; 
     width: 250px;
-    height: 500px;
+    height: 600px;
     margin-left: 100px;
+    color: white
 }
 
 #gameArea{
     outline-style: solid;
-    outline-color: black;
+    outline-color: white;
     outline-width: 1px; 
     width: 800px;
-    height: 500px;
+    height: 600px;
 }
 
 .instructions{
     outline-style: solid;
-    outline-color: black;
+    outline-color: white;
     outline-width: 1px; 
     width: 250px;
-    height: 500px;
+    height: 600px;
     margin-right: 100px;
+    color: white
 }
 
 .section1{
@@ -31,12 +40,13 @@
 
 .info{
     outline-style: solid;
-    outline-color: black;
+    outline-color: white;
     outline-width: 1px; 
     width: 1180px;
     height: 50px;
     margin-left: 100px;
     margin-right: 100px;
+    color: white
 }
 
 body {
@@ -45,13 +55,3 @@ body {
     align-items: center;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-}
-
-canvas {
-    background: #eee;
-    display: block;
-    margin: 0 auto;
-  }

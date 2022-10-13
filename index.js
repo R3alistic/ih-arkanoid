@@ -1,5 +1,8 @@
-var canvas = document.getElementById("myCanvas");
+console.log("is linked");
+
+var canvas = document.getElementById("gameArea");
 var ctx = canvas.getContext("2d");
+
 var ballRadius = 10;
 var x = canvas.width/2;
 var y = canvas.height-30;
