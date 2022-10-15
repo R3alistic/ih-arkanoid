@@ -1,25 +1,22 @@
-console.log("is linked");
-
 var canvas = document.getElementById("gameArea");
-var ctx = canvas.getContext("2d");
-
-var ballRadius = 10;
+var ctx = canvas.getContext('2d');
+var ballRadius = 6;
 var x = canvas.width/2;
 var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+var dx = 5;
+var dy = -5 ;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 5;
-var brickColumnCount = 3;
-var brickWidth = 75;
+var brickRowCount = 15;
+var brickColumnCount = 6;
+var brickWidth = 55;
 var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 30;
-var brickOffsetLeft = 30;
+var brickPadding = 0;
+var brickOffsetTop = 115;
+var brickOffsetLeft = 0;
 var score = 0;
 var lives = 3;
 
@@ -146,8 +143,8 @@ function draw() {
             else {
                 x = canvas.width/2;
                 y = canvas.height-30;
-                dx = 2;
-                dy = -2;
+                dx = 5;
+                dy = -5;
                 paddleX = (canvas.width-paddleWidth)/2;
             }
         }
