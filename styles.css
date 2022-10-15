@@ -2,16 +2,15 @@
     padding: 0;
     margin: 0;
     background-image: url("./images/backgroundimg.png");
-    background-repeat: repeat;
+    background-repeat: stretch;
 }
 
 .rules {
- 
     outline-style: solid;
     outline-color: white;
     outline-width: 1px; 
     width: 250px;
-    height: 600px;
+    height: 500px;
     margin-left: 100px;
     color: white
 }
@@ -21,16 +20,17 @@
     outline-color: white;
     outline-width: 1px; 
     width: 800px;
-    height: 600px;
+    height: 500px;
+    background-image: url("./images/gameBGI.png");
+    background-size: stretch;
 }
 
 .instructions{
-    
     outline-style: solid;
     outline-color: white;
     outline-width: 1px; 
     width: 250px;
-    height: 600px;
+    height: 500px;
     margin-right: 100px;
     color: white
 }

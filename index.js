@@ -1,12 +1,13 @@
 let canvas = document.getElementById("gameArea");
 let ctx = canvas.getContext('2d');
+
 let ballRadius = 6;
 let x = canvas.width/2;
 let y = canvas.height-30;
-let dx = 2;
+let dx = 2
 let dy = -2 ;
 let paddleHeight = 20;
-let paddleWidth = 75;
+let paddleWidth = 85;
 let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed = false;
 let leftPressed = false;
@@ -101,6 +102,7 @@ function drawBricks() {
         bricks[c][r].x = brickX;
         bricks[c][r].y = brickY;
         switch (c) {
+
           case 0:
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
@@ -110,6 +112,7 @@ function drawBricks() {
             ctx.fill();
             ctx.closePath();
             break;
+
           case 1:
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
@@ -136,6 +139,7 @@ function drawBricks() {
             ctx.fill();
             ctx.closePath();
             break;
+
           case 4:
             ctx.beginPath();
             ctx.rect(brickX, brickY, brickWidth, brickHeight);
@@ -160,16 +164,20 @@ function drawBricks() {
 }
 
 function drawScore() {
-  ctx.font = "16px Arial";
-  ctx.fillStyle = "#0095DD";
-  ctx.fillText("Score: " + score, 8, 20);
+  ctx.font = "20px Nordic Light";
+  ctx.fillStyle = "white";
+  ctx.fillText("Score: " + score, 18, 30);
 }
 
+let paddleLife = new Image();
+paddleLife.src ="./images/lifeSymbol.png";
+
 function drawLives() {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = "#0095DD";
-    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+    ctx.font = "20px Nordic Light";
+    ctx.fillStyle = "#black";
+    ctx.fillText("Lives: ", canvas.width - 185, 35);
 }
+
 
 function clear(){
     ctx.clearRect(0,0,c.width,c.height);
@@ -184,6 +192,17 @@ function draw() {
     drawScore();
     drawLives();
     collisionDetection();
+    
+    if (lives === 3) {
+        ctx.drawImage(paddleLife, canvas.width - 50, 20, 40, 20);
+        ctx.drawImage(paddleLife, canvas.width - 90, 20, 40, 20);
+        ctx.drawImage(paddleLife, canvas.width - 130, 20, 40, 20);
+    } else if (lives === 2) {
+        ctx.drawImage(paddleLife, canvas.width - 90, 20, 40, 20);
+        ctx.drawImage(paddleLife, canvas.width - 130, 20, 40, 20);
+    } else if (lives === 1) {
+        ctx.drawImage(paddleLife, canvas.width - 130, 20, 40, 20);
+    } 
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
@@ -196,7 +215,10 @@ function draw() {
             dy = -dy;
         }
         else {
+
             lives--;
+            /* lifeImageArray.pop(); */
+
             if(!lives) {
                 alert("Sorry Loser, Game over");
                 document.location.reload();
