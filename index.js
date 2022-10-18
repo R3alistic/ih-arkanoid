@@ -67,6 +67,12 @@ function collisionDetection() {
                     dy = -dy;
                     b.status = 0;
                     score++;
+
+                    let ballTouchSound;
+                    ballTouchSound = new Audio("./soundEffects/ballTouchSound.wav");
+                    ballTouchSound.play();
+
+
                     if (score == brickRowCount * brickColumnCount) {
                         alert("YOU WIN, CONGRATS!");
                         document.location.reload();
@@ -193,6 +199,7 @@ function draw() {
     drawLives();
     collisionDetection();
     
+
     if (lives === 3) {
         ctx.drawImage(paddleLife, canvas.width - 50, 20, 40, 20);
         ctx.drawImage(paddleLife, canvas.width - 90, 20, 40, 20);
@@ -203,6 +210,7 @@ function draw() {
     } else if (lives === 1) {
         ctx.drawImage(paddleLife, canvas.width - 130, 20, 40, 20);
     } 
+
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
@@ -215,9 +223,7 @@ function draw() {
             dy = -dy;
         }
         else {
-
             lives--;
-            /* lifeImageArray.pop(); */
 
             if(!lives) {
                 alert("Sorry Loser, Game over");
@@ -234,6 +240,7 @@ function draw() {
         }
     }
 
+
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
         paddleX += 7;
     }
@@ -241,6 +248,7 @@ function draw() {
         paddleX -= 7;
     }
 
+    
     x += dx;
     y += dy;
     
@@ -250,9 +258,20 @@ function draw() {
 draw();
 
 function startGame() {
+
     let startDiv = document.getElementById("start");
     let gameCanvas = document.getElementById("gameArea");
     startDiv.style.display = "none";
     gameCanvas.style.display = "block";
+
+    
+    let startSound;
+    startSound = new Audio("./soundEffects/gameStartSound.wav");
+    startSound.play();
+    
+
     draw();
 }
+
+
+

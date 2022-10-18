@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     background-image: url("./images/backgroundimg.png");
-    background-repeat: stretch;
+    background-repeat: no-repeat;
 }
 
 .rules {
@@ -57,7 +57,7 @@ body {
     align-items: center;
 }
 
-#start {
+#start, #level {
     margin-top: 20%;
     margin-left: 190px;
     margin-right: 190px;
@@ -71,7 +71,7 @@ body {
    
 }
 
-#start a {
+#start a, #level a {
     border: 3px solid #ffffff;
     color: #ffffff;
     text-decoration: none;
@@ -85,5 +85,11 @@ body {
     display: inline-block;
 }
 
+#buttons {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    justify-content: center;
+}
 
 
