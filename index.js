@@ -13,6 +13,7 @@ let paddleX = (canvas.width - paddleWidth) / 2;
 let paddleY = y;
 let rightPressed = false;
 let leftPressed = false;
+let upPressed = false;
 let lastPaddleX = paddleX;
 //Brick Variables
 let brickRowCount = 13;
@@ -66,12 +67,15 @@ document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function keyDownHandler(e) {
-    // add a and d 
+    // add a and d and 2
     if (e.code == 'ArrowRight' || e.code == 'KeyA') {
         rightPressed = true;
     }
     else if (e.code == 'ArrowLeft' || e.code == 'KeyD') {
         leftPressed = true;
+    }
+    else if (e.code == 'ArrowUp' || e.code == 'KeyW'){
+        upPressed = true; 
     }
 }
 
@@ -154,20 +158,41 @@ function drawPaddle() {
                 case powerUpType.extend:
                     powerUpExtension = true;
                     paddleWidth = 115;
+
+                    let extendSound;
+                    extendSound = new Audio("./soundEffects/Enlarge.mp3");
+                    extendSound.play();
+
                     break;
                 //life incrementation
                 case powerUpType.life:
                     lives++;
+
+                    let lifeSound;
+                    lifeSound = new Audio("./soundEffects/extraLife.mp3");
+                    lifeSound.play();
+
                     break;
                 //activate ball stickyness
                 case powerUpType.sticky:
                     powerUpSticky = true;
                     powerUpSuper = false;
+
+                    let stickySound;
+                    stickySound = new Audio("./soundEffects/sticky.mp3");
+                    stickySound.play();
+
                     break;
+
                 //activate super ball
                 case powerUpType.super:
                     powerUpSuper = true;
                     powerUpSticky = false;
+
+                    let powerupSound;
+                    powerupSound = new Audio("./soundEffects/ballTouchSound.wav");
+                    powerupSound.play();
+
                     break;
             }
             powerUpsArray.slice(i, 1);
@@ -366,6 +391,7 @@ function draw() {
     else if (leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
+    
     // move stationary ball with the paddle when sticky power up is online
     else if (dy == 0) {
         x = paddleX + paddleWidth * 0.5;
