@@ -369,7 +369,7 @@ function draw() {
     // move stationary ball with the paddle when sticky power up is online
     else if (dy == 0) {
         x = paddleX + paddleWidth * 0.5;
-        y = paddleY - paddleHeight;
+        y = paddleY - paddleHeight * 0.01;
     }
     x += dx;
     y += dy;
