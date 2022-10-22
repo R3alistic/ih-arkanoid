@@ -1,85 +1,101 @@
 * {
     padding: 0;
     margin: 0;
-    background-image: url("./images/backgroundimg.png");
-    background-repeat: no-repeat;
+    background-color: black;
+}
+#mainContent{
+    display: flex;
 }
 
-.rules {
-    outline-style: solid;
-    outline-color: white;
-    outline-width: 1px; 
-    width: 250px;
+#imgRule{
+    margin-top: 100px;
+    width: 150px;
+    height: 150px;
+    margin-left: 40px;
+}
+.rules { 
+    width: 200px;
     height: 500px;
-    margin-left: 100px;
-    color: white
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px; 
+}
+
+#rule{
+    font-size: 70px;
+    font-weight: 300;
+    font-style: inherit;
+    color: #f6e334;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+}
+
+.rules p {
+    text-align: center;
+    border: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: #f6e334;
+    line-height: 30px;
+    width: 300px;
+    margin-left: -50px;
+    
 }
 
 #gameArea{
-    outline-style: solid;
-    outline-color: white;
-    outline-width: 1px; 
     width: 800px;
     height: 500px;
-    background-image: url("./images/gameBGI.png");
+    background-image: url("./images/canvasBgI.png");
     background-size: stretch;
+    margin-left:-710px; 
+    margin-top: 150px; 
+    border: 5px solid transparent;
+    border-image: url('./images/borderImg.jpg') 30% round;
+    border-image-width: 5px;
 }
 
 .instructions{
-    outline-style: solid;
-    outline-color: white;
-    outline-width: 1px; 
-    width: 250px;
+    width: 200px;
     height: 500px;
-    margin-right: 100px;
-    color: white
+    color: #E9E6E6;
+    display: flex;
+    flex-direction: column;
 }
 
-.section1{
-    display: flex;
-    margin-top: 5%;
-}
 
 .info{
-    outline-style: solid;
-    outline-color: white;
-    outline-width: 1px; 
-    width: 1180px;
+    margin-top: 50px;
+    width: 500px;
     height: 50px;
-    margin-left: 100px;
-    margin-right: 100px;
-    color: white
+    color: #E9E6E6;
+    margin-left: 480px;
+    font-size: 12px;
+    text-align: center;
 }
 
-body {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#start, #level {
-    margin-top: 20%;
-    margin-left: 190px;
-    margin-right: 190px;
+#start {
     font-family:Arial, Helvetica, sans-serif;
-    color: #ffffff;
+    color: #E9E6E6;
     padding: 20px;
     height:200px;
-    width:250px;
+    width:300px;
     text-align: center;
     background: transparent;
-   
+    margin: auto;
+    margin-left:25px;   
 }
 
-#start a, #level a {
-    border: 3px solid #ffffff;
-    color: #ffffff;
+#start a {
+    border: 3px solid #fa9e35;
+    color: #fa9e35;
     text-decoration: none;
     padding: 10px;
     border-radius: 15px;
     cursor: pointer;
     display: block;
-    width: 200px;
+    width: 300px;
     text-align: center;
     font-size:2em;
     display: inline-block;
@@ -88,8 +104,77 @@ body {
 #buttons {
     display: flex;
     flex-direction: column;
-    max-height: 500px;
     justify-content: center;
+    margin-left: 150px;
+    margin-top: 150px;
+}
+ 
+#name {
+    color: #c73add;
+    text-align: center;
+    font-size: 8em;
+    font-weight: 900;
+    margin-bottom: 80px;
+    margin-top: 40px;
+    margin-left: -100px;
+    font-family: 'Franklin Gothic'; 
+}
+
+#imgIns {
+    margin-top: 100px;
+    width: 250px;
+    height: 250px;
+    margin-left: 50px; 
+}
+
+#instruction{
+    font-size: 70px;
+    font-weight: 300;
+    font-style: inherit;
+    color: #f6e334;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: -5px;
+}
+
+.instructions p{
+    text-align: center;
+    border: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    border-color: #f6e334;
+    line-height: 30px;
+    width: 300px;
+    margin-left: -50px;
+
+}
+
+.instructions, .rules {
+    margin: auto;
+}
+
+
+#imgRule, #imgIns {
+
+    width: 100px;
+    height: auto;
+
+
+        -webkit-animation: mover 0.5s infinite  alternate;
+        animation: mover 0.5s infinite  alternate;
+    }
+    @-webkit-keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+    @keyframes mover {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+
+.github {
+    width: 15px;
+    height: auto; 
 }
 
 
