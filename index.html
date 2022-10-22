@@ -9,33 +9,67 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <section class="section1">
-     <div class = "rules"> 
-        This part is the rule 
-    </div>
 
-    <div id="buttons">
+ <section id="mainContent">
 
-    <div id="start">
-        <a href="#" onclick="startGame();">Start Game</a>
-    </div>
-
-    <div id="level">
-        <a href="#" onclick="startNewLevel();">New Level</a>
+    <div class="rules">
+     <img id="imgRule" src="https://thumbs2.imgbox.com/3d/68/v0HE9cW0_t.jpg" alt="GIF rules"/></a>
+     <br>
+     <span id = "rule"> RULES </span>
+     <p>
+        Yea, good boy/girl you are reading it <br>
+        Did you play breakout before? <br> 
+        You smart won't need any rules. 😛<br>
+        Joking! Keyboard control, ad / ⬅️ ➡️ <br>
+        Or simply use your 🐭  <br>
+        Easy Peasy right? ✨ <br>
+        Break as many Breaks as you can! <br>
+        🔴 🟡 🟢 🟠 🔵 🟣 🟤
+    </p>
     </div>
     
+    <div id="buttons">
+        <div id = "name">
+            HackerNoid
+        </div>
+
+        <div id="start">
+          <a href="#" onclick="startGame();"> 🎬 Start Game 🎬 </a>
+        </div>
     </div>
 
-    <canvas id="gameArea" width="800px" height="500px" style="display:none"></canvas>
-     
+
+    <div>
+        <canvas id="gameArea" width="800px" height="500px" style="display:none"></canvas>
+    </div>
+    
+
      <div class = "instructions"> 
-        This part is for extra instructions, such as effects 
+        <img id="imgIns" src="./images/instruction.jpg" alt="imgIns">
+        <span id = "instruction">GUIDE</span>
+        <p>
+            这就是游戏说明嘻嘻嘻哈哈哈<br>
+            Wat? WaT? Lang=EN is here<br>
+            You will randomly face these:<br>
+            Pad being larger, given 1 more life,<br>
+            balls get sticky to the pad, <br>
+            and your ballsbreak though the block<br>
+            Super fun right? 🤣 That's it! <br>
+            The developers are tired, no more! 🤭<br>
+        </p>
     </div>
-    </section>
 
-    <div class = "info">
-        We write our social media channel here 
+</section>
+
+<section id="extraInfo">
+    <div class = "info">  
+        <p>This game is developed by ironhack students: Alexandre Cunha & Rian Yan. <br>
+            For question or doubt, please contact us on github:
+            <img class = "github" src = "./images/github.png" alt="github"> R3alistic;
+            <img class = "github" src = "./images/github.png" alt="github"> rianyan9723 <br>
+        </p>
     </div>  
+</section>
 
 </body>
 </html>

@@ -66,19 +66,21 @@ document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function keyDownHandler(e) {
-    if (e.code == "ArrowRight") {
+    // add a and d 
+    if (e.code == 'ArrowRight' || e.code == 'KeyA') {
         rightPressed = true;
     }
-    else if (e.code == 'ArrowLeft') {
+    else if (e.code == 'ArrowLeft' || e.code == 'KeyD') {
         leftPressed = true;
     }
 }
 
 function keyUpHandler(e) {
-    if (e.code == 'ArrowRight') {
+    // add a and d 
+    if (e.code == 'ArrowRight' || e.code == 'KeyA') {
         rightPressed = false;
     }
-    else if (e.code == 'ArrowLeft') {
+    else if (e.code == 'ArrowLeft' || e.code == 'KeyD') {
         leftPressed = false;
     }
 }
@@ -174,7 +176,27 @@ function drawPaddle() {
     }
 }
 
+
+
 function drawBricks() {
+    // this is a new change, create brick pictures here 
+    let silverBlock = new Image();
+    silverBlock.src = "./images/silver-block.png";
+
+    let redBlock = new Image();
+    redBlock.src = "./images/red-block.png";
+
+    let yellowBlock = new Image();
+    yellowBlock.src = "./images/yelllow-block.png";
+
+    let blueBlock = new Image();
+    blueBlock.src = "./images/blue-block.png";
+
+    let magentaBlock = new Image();
+    magentaBlock.src = "./images/magenta-block.png";
+
+    let greenBlock = new Image();
+    greenBlock.src = "./images/green-block.png";
     for (let c = 0; c < brickColumnCount; c++) {
         for (let r = 0; r < brickRowCount; r++) {
             let brickX = r * (brickWidth + brickPadding) + brickOffsetLeft;
@@ -194,58 +216,40 @@ function drawBricks() {
             //creates the bricks
             else if (bricks[c][r].status == 1) {
                 switch (c) {
+                    //draw brick pictures 
                     case 0:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "silver";
-                        ctx.strokeStyle = "grey";
-                        ctx.fill();
+                        ctx.drawImage(silverBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
 
                     case 1:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "red";
-                        ctx.fill();
+                        ctx.drawImage(redBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
 
                     case 2:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "yellow";
-                        ctx.fill();
+                        ctx.drawImage(yellowBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
 
                     case 3:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "blue";
-                        ctx.fill();
+                        ctx.drawImage(blueBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
 
                     case 4:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "magenta";
-                        ctx.fill();
+                        ctx.drawImage(magentaBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
 
                     case 5:
                         ctx.beginPath();
-                        ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.strokeRect(brickX, brickY, brickWidth, brickHeight);
-                        ctx.fillStyle = "green";
-                        ctx.fill();
+                        ctx.drawImage(greenBlock, brickX, brickY, brickWidth, brickHeight);
                         ctx.closePath();
                         break;
                 }
@@ -282,7 +286,6 @@ function drawLives() {
     ctx.fillStyle = "#black";
     ctx.fillText("Lives: ", canvas.width - 185, 35);
 }
-
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -363,9 +366,8 @@ function draw() {
     else if (leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
-    // move the stationary ball with the paddle when sticky power up is online
+    // move stationary ball with the paddle when sticky power up is online
     else if (dy == 0) {
-        //x += paddleX - lastPaddleX;
         x = paddleX + paddleWidth * 0.5;
         y = paddleY - paddleHeight;
     }
@@ -386,6 +388,3 @@ function startGame() {
     startSound.play();
     draw();
 }
-
-
-
