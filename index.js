@@ -4,8 +4,8 @@ let ctx = canvas.getContext('2d');
 let ballRadius = 6;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
-let dx = 2
-let dy = -2;
+let dx = 1;
+let dy = -1;
 //Paddle Variables
 let paddleHeight = 20;
 let paddleWidth = 85;
@@ -374,8 +374,8 @@ function draw() {
             else {
                 x = canvas.width / 2;
                 y = canvas.height - 30;
-                dx = 2;
-                dy = -2;
+                dx = 1;
+                dy = -1;
                 paddleX = (canvas.width - paddleWidth) / 2;
                 powerUpSuper = false;
                 powerUpLife = false;
