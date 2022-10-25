@@ -87,6 +87,9 @@ function keyUpHandler(e) {
     else if (e.code == 'ArrowLeft' || e.code == 'KeyD') {
         leftPressed = false;
     }
+    else if (e.code == 'ArrowUp' || e.code == 'KeyW'){
+        upPressed = true; 
+    }
 }
 
 function mouseMoveHandler(e) {
@@ -396,6 +399,10 @@ function draw() {
     else if (dy == 0) {
         x = paddleX + paddleWidth * 0.5;
         y = paddleY - paddleHeight * 0.01;
+        if (upPressed) {
+            dx = 0;
+            dy = -2;
+        }
     }
     x += dx;
     y += dy;

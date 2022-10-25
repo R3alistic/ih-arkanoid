@@ -178,14 +178,14 @@
 }
 
     #start a, #level a {
-        border: 3px solid #ffffff;
-        color: #ffffff;
+        border: 3px solid #fa9e35;
+        color: #fa9e35;
         text-decoration: none;
         padding: 10px;
         border-radius: 15px;
         cursor: pointer;
         display: block;
-        width: 200px;
+        width: 300px;
         text-align: center;
         font-size:2em;
         display: inline-block;
