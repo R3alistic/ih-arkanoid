@@ -5,7 +5,7 @@ let ballRadius = 6;
 let x = canvas.width / 2;
 let y = canvas.height - 30;
 let dx = 1.5;
-let dy = -1.5;
+let dy = 0;
 //Paddle Variables
 let paddleHeight = 20;
 let paddleWidth = 85;
@@ -29,9 +29,9 @@ let lives = 3;
 //PowerUp Variables, Class and Type Object
 let powerUpCount = 2;
 let powerUpSpeed = 0.1;
-let powerUpChance = 0.0001;
+let powerUpChance = 0.00001;
 //Reset Powerups when game starts
-let powerUpSuper = true;
+let powerUpSuper = false;
 let powerUpLife = false;
 let powerUpSticky = false;
 let powerUpExtension = false;
@@ -85,7 +85,7 @@ let stickyBall = new Image();
 stickyBall.src = "/images/sticky-ball.png";
 
 //Sound Resources
-let powerupSound = new Audio("./sounds/ballTouchSound.wav");
+let powerupSound = new Audio("./sounds/breakThrough.wav");
 let extendSound = new Audio("./sounds/enlarge.wav");
 let lifeSound = new Audio("./sounds/extraLife.mp3");
 let stickySound = new Audio("./sounds/sticky.wav");
@@ -95,7 +95,7 @@ let startSound = new Audio("./sounds/gameStartSound.wav");
 //Event listeners for player pad control
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-//document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function keyDownHandler(e) {
   if (e.code == "ArrowRight" || e.code == "KeyA") {
@@ -117,12 +117,12 @@ function keyUpHandler(e) {
   }
 }
 
-// function mouseMoveHandler(e) {
-//     let relativeX = e.clientX - canvas.offsetLeft;
-//     if (relativeX > 0 && relativeX < canvas.width) {
-//         paddleX = relativeX - paddleWidth / 2;
-//     }
-// }
+function mouseMoveHandler(e) {
+    let relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+    }
+}
 
 function collisionDetection() {
   for (let c = 0; c < brickColumnCount; c++) {
@@ -176,13 +176,7 @@ function drawPaddle() {
   paddle.src = powerUpSticky
     ? "./images/magnetic-pad.png"
     : "./images/paddle-image.png";
-  ctx.drawImage(
-    paddle,
-    paddleX,
-    canvas.height - paddleHeight,
-    paddleWidth,
-    paddleHeight
-  );
+  ctx.drawImage(paddle,paddleX,canvas.height - paddleHeight,paddleWidth,paddleHeight);
   ctx.closePath();
   //Power Up hit collision with player paddle
   for (let i = powerUpsArray.length - 1; i >= 0; i--) {
@@ -235,15 +229,14 @@ function drawBricks() {
       bricks[c][r].y = brickY;
       //creates new PowerUp
       if (bricks[c][r].status == 0 && Math.random() < powerUpChance) {
-        let px = bricks[c][r].x + brickWidth / 2;
-        let py = bricks[c][r].y + brickHeight / 2;
-        let pWidth = brickWidth / 2;
-        let pHeight = brickHeight / 3;
+        let px = bricks[c][r].x + brickWidth;
+        let py = bricks[c][r].y + brickHeight;
+        let pWidth = brickWidth / 1.5;
+        let pHeight = brickHeight / 1.5;
         let pKeys = Object.keys(powerUpType);
         let pKey = pKeys[Math.floor(Math.random() * pKeys.length)];
-        powerUpsArray.push(
-          new PowerUp(px, py, pWidth, pHeight, powerUpType[pKey])
-        );
+        let pup = new PowerUp(px, py, pWidth, pHeight, powerUpType[pKey]);
+        powerUpsArray.push(pup);
       }
       //creates the bricks
       else if (bricks[c][r].status == 1) {
@@ -291,53 +284,28 @@ function drawBricks() {
   }
 }
 
-function drawPowerUps() {
-  /*  if (powerUpsArray.length >= 1){
-  for (let pup of powerUpsArray) {
-    switch (powerUpsArray[i].type) {
-      case extend:
-        ctx.beginPath();
-        ctx.drawImage(extendPad, PowerUp.x, PowerUp.Y, PowerUp.width, PowerUp.height);
-        ctx.closePath();
-        break;
-        default: 
-         ctx.beginPath();
-        ctx.drawImage(superBall, PowerUp.x, PowerUp.Y, PowerUp.width, PowerUp.height);
-        ctx.closePath();
-        break;
-
-    }
-    
-  } */
-  //ctx.fillStyle = "cyan";
-  powerUpsArray.forEach((powerUp) => {
-
-  })
-}
-
 function updatePowerUps() {
   for (let i = powerUpsArray.length - 1; i >= 0; i--) {
     powerUpsArray[i].y += powerUpsArray[i].yv;
-    console.log(powerUpsArray[i].type.color)
     switch (powerUpsArray[i].type.color) {
       case "blue":
         ctx.beginPath();
-        ctx.drawImage(extendPad, PowerUp.x, PowerUp.y, PowerUp.width, PowerUp.height);
+        ctx.drawImage(extendPad, powerUpsArray[i].x, powerUpsArray[i].y, powerUpsArray[i].width, powerUpsArray[i].height);
         ctx.closePath();
         break;
       case "red":
         ctx.beginPath();
-        ctx.drawImage(extraLife, PowerUp.x, PowerUp.y, PowerUp.width, PowerUp.height);
+        ctx.drawImage(extraLife, powerUpsArray[i].x, powerUpsArray[i].y, powerUpsArray[i].width, powerUpsArray[i].height);
         ctx.closePath();
         break;
       case "cyan":
         ctx.beginPath();
-        ctx.drawImage(stickyBall, PowerUp.x, PowerUp.y, PowerUp.width, PowerUp.height);
+        ctx.drawImage(stickyBall, powerUpsArray[i].x, powerUpsArray[i].y, powerUpsArray[i].width, powerUpsArray[i].height);
         ctx.closePath();
         break;
       case "magenta":
         ctx.beginPath();
-        ctx.drawImage(superBall, PowerUp.x, PowerUp.y, PowerUp.width, PowerUp.height);
+        ctx.drawImage(superBall, powerUpsArray[i].x, powerUpsArray[i].y, powerUpsArray[i].width, powerUpsArray[i].height);
         ctx.closePath();
         break;
     }
@@ -368,7 +336,6 @@ function draw() {
   drawScore();
   drawLives();
   collisionDetection();
-  drawPowerUps();
   updatePowerUps();
 
   //draw additional life icons depending on life variable
@@ -418,8 +385,8 @@ function draw() {
       else {
         x = canvas.width / 2;
         y = canvas.height - 30;
-        dx = 1;
-        dy = -1;
+        dx = 1.5;
+        dy = 0;
         paddleX = (canvas.width - paddleWidth) / 2;
         powerUpSuper = false;
         powerUpLife = false;
@@ -434,8 +401,8 @@ function draw() {
   } else if (leftPressed && paddleX > 0) {
     paddleX -= 7;
   } else if (upPressed && dy == 0) {
-    dx = 1.5;
-    dy = 1.5;
+    dx = 0.75;
+    dy = -1.5;
   }
 
   // move stationary ball with the paddle when sticky power up is online
