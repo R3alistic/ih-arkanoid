@@ -264,12 +264,7 @@ function drawBricks() {
             break;
           case 4:
             ctx.beginPath();
-            ctx.drawImage(
-              magentaBlock,
-              brickX,
-              brickY,
-              brickWidth,
-              brickHeight
+            ctx.drawImage(magentaBlock,brickX,brickY,brickWidth,brickHeight
             );
             ctx.closePath();
             break;
@@ -375,8 +370,8 @@ function draw() {
     //life decrement
     else {
       lives--;
-      //game over condition
-      if (!lives) {
+    //game over condition
+    if (!lives) {
         alert("Sorry Loser, Game over");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         document.location.reload();
