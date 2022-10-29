@@ -29,7 +29,7 @@ let lives = 3;
 //PowerUp Variables, Class and Type Object
 let powerUpCount = 2;
 let powerUpSpeed = 0.1;
-let powerUpChance = 0.00001;
+let powerUpChance = 0.0001;
 //Reset Powerups when game starts
 let powerUpSuper = false;
 let powerUpLife = false;
